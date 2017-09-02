@@ -16,8 +16,7 @@ import {
     createNewPost,
     editExistingPost,
     deleteExistingPost,
-    sortPostByUpVotes,
-    sortPostByDownVotes,
+    sortPostsByVotes,
     sortPostsByTime
 } from './actions_posts';
 import {
@@ -79,8 +78,7 @@ export {
     createNewPost,
     editExistingPost,
     deleteExistingPost,
-    sortPostByUpVotes,
-    sortPostByDownVotes,
+    sortPostsByVotes,
     sortPostsByTime,
     UP_VOTE_POST,
     DOWN_VOTE_POST,

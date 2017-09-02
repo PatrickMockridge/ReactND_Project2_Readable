@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
-//import IconButton from 'material-ui/IconButton'
-//import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+//import DropDownMenu from 'material-ui/DropDownMenu';
+import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { connect } from 'react-redux';
 import {
     fetchCategories,
@@ -17,25 +18,22 @@ const styles = {
 
 class CategoriesMenu extends Component {
 
-
-
   componentWillMount() {
     this.props.fetchCategories();
-
 }
 
+  render() {
 
-
-render() {
     const { fetchPostsByCategory } = this.props;
-    const handleChange = (event, index, value) => this.props.fetchPostsByCategory(value)
     const categories = this.props.categories;
+    const handleChange = (event, value) => this.props.fetchPostsByCategory(value)
     const currentCategory = this.props.currentCategory
     return (
-        <DropDownMenu
+        <IconMenu
+          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
           onChange={handleChange}
-          value={currentCategory}
           openImmediately={true}
+          value={currentCategory}
           >
             {categories.map(((category, index) => (
                           <MenuItem item key={(index).toString()}
@@ -43,14 +41,15 @@ render() {
                             primaryText={category.name}
                              />
                           )))}
-        </DropDownMenu>
+        </IconMenu>
     );
   }
 }
 
 const mapStateToProps = ({categories}) => {
     return {
-        categories: categories.categories
+        categories: categories.categories,
+        currentCategory: categories.currentCategory
     }
 }
 

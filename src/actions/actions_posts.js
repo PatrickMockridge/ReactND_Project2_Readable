@@ -34,12 +34,11 @@ export const fetchPostsByCategory = (category) => dispatch => (
             posts
         }))
 );
-export const fetchPostDetails = (postId, category) => dispatch => (
+export const fetchPostDetails = (postId) => dispatch => (
     getPost(postId)
         .then(post => dispatch({
             type: SELECT_POST,
-            post,
-            category
+            post
         }))
 );
 export const fetchCategories = (category) => dispatch => (
@@ -79,13 +78,10 @@ export const deleteExistingPost = (id) => dispatch => (
 );
 
 //sort
-export const sortPostByUpVotes = () => ({
+export const sortPostsByVotes = () => ({
     type: SORT_POSTS_BY_UP_VOTES
 });
 
-export const sortPostByDownVotes = () => ({
-    type: SORT_POSTS_BY_DOWN_VOTES
-});
 export const sortPostsByTime = () => ({
     type: SORT_POSTS_BY_TIME
 });

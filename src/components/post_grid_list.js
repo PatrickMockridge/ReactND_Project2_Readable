@@ -5,6 +5,7 @@ import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
 import FontIcon from 'material-ui/FontIcon';
 import { connect } from 'react-redux';
 import { tealA400 } from 'material-ui/styles/colors';
+import { fetchPostDetails, fetchComments } from '../actions'
 
 const styles = {
   root: {
@@ -16,6 +17,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'nowrap',
     overflowX: 'auto',
+    marginRight: '1'
   },
   titleStyle: {
     color: 'rgb(0, 188, 212)',
@@ -25,7 +27,13 @@ const styles = {
   }
 };
 
-const PostGridList = (props) => (
+  const PostGridList = (props) => {
+
+  const { fetchPostDetails } = props
+
+  const openPostDetail = (event) => fetchPostDetails(event.target.value)
+
+  return (
 
   <div style={styles.root}>
     <GridList style={styles.gridList} cols={2.2}>
@@ -33,7 +41,7 @@ const PostGridList = (props) => (
         <GridTile
           key={post.id}
           title={post.title}
-          actionIcon={<IconButton><ActionFlightTakeoff  color={tealA400} /></IconButton>}
+          actionIcon={<IconButton value={post.id} onClick={openPostDetail}><ActionFlightTakeoff  color={tealA400} /></IconButton>}
           titleStyle={styles.titleStyle}
           titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
           style={styles.tileStyle}
@@ -43,7 +51,8 @@ const PostGridList = (props) => (
       ))}
     </GridList>
   </div>
-);
+  )
+};
 
 function mapStateToProps ({posts, currentCategory}) {
     return {
@@ -51,5 +60,11 @@ function mapStateToProps ({posts, currentCategory}) {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchPostDetails: (id) => dispatch(fetchPostDetails(id))
+    }
+}
 
-export default connect(mapStateToProps, null)(PostGridList);
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostGridList);

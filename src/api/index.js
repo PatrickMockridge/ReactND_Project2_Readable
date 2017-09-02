@@ -30,12 +30,10 @@ export const getPostsByCategory = (category) =>
 
 export const createPost = (post) =>
     axios.post(`${ROOT_URL}/posts`, {
-      data: {
           ...post,
           id: uuid(),
           timestamp: Date.now()
-        }
-      },
+    },
       {
       headers: {
           ...headers,
@@ -58,7 +56,7 @@ export const deletePost = (id) =>
 
 export const getPost = (id) =>
     axios.get(`${ROOT_URL}/posts/${id}`, { headers })
-        .then(res => res.json())
+        .then(res => res.data)
 
 export const votePost = (id, option) =>
     axios.post(`${ROOT_URL}/posts/${id}`, {
