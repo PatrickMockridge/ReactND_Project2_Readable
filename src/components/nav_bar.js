@@ -4,14 +4,16 @@ import IconButton from 'material-ui/IconButton';
 import PostSorterMenu from './post_sorter_menu'
 import CategoriesMenu from './categories_menu'
 import { connect } from 'react-redux'
-import { fetchPosts } from '../actions'
 
 
 const NavBar = (props) => {
 
-  const { fetchPosts } = props;
+  //const { fetchPosts } = props;
 
-  const handleTouchTap = () => props.fetchPosts();
+  const handleTouchTap = () => {
+    window.location.reload()
+  }
+
 
   const styles = {
   title: {
@@ -32,13 +34,4 @@ const NavBar = (props) => {
     );
   }
 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      fetchPosts: () => dispatch(fetchPosts())
-    }
-  }
-
-  export default connect(
-      null,
-      mapDispatchToProps
-  )(NavBar);
+  export default (NavBar);

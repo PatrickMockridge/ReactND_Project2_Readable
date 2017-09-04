@@ -43,13 +43,10 @@ export const createPost = (post) =>
 
 export const editPost = ({id, title, body}) =>
     axios.put(`${ROOT_URL}/posts/${id}`, {
-        headers: headers,
-        body: JSON.stringify({
             title,
             body,
             timestamp: Date.now()
-        })
-    }).then(res => res.json())
+        }, { headers }).then(res => res.data)
 
 export const deletePost = (id) =>
     axios.delete(`${ROOT_URL}/posts/${id}`, { headers })
@@ -82,20 +79,19 @@ export const voteComment = (id, option) =>
 
 export const getComments = (postId) =>
     axios.get(`${ROOT_URL}/posts/${postId}/comments`, { headers })
-        .then(res => res.json())
+        .then(res => res.data)
 
 export const createComment = (comment) =>
     axios.post(`${ROOT_URL}/comments`, {
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify({
             ...comment,
             id: uuid(),
             timestamp: Date.now()
-        })
-    }).then(res => res.json())
+        }, {
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+          }
+        }).then(res => res.data)
 
 export const editComment = (id, body) =>
     axios.put(`${ROOT_URL}/comments/${id}`, {

@@ -41,6 +41,7 @@ export const fetchPostDetails = (postId) => dispatch => (
             post
         }))
 );
+
 export const fetchCategories = (category) => dispatch => (
     getCategories()
         .then(categories => dispatch({

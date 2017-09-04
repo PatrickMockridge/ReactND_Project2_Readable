@@ -68,7 +68,7 @@ class PostDialog extends Component {
                 title={dialogTitle}
                 contentStyle={customContentStyle}>
                     <TextField
-                        required autoFocus 
+                        required autoFocus
                         error={isTitleError}
                         onChange={(event) =>
                             handlePostDialogChange("title", event.target.value)}
@@ -88,7 +88,7 @@ class PostDialog extends Component {
                         multiLine={true}
                         rows={4}
                         rowsMax={6}
-                        />
+                      />
                         <br/>
                         <br/>
                         <TextField

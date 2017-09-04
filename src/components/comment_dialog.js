@@ -4,9 +4,7 @@ import Dialog, {
   DialogContent,
   DialogTitle,
 } from 'material-ui/Dialog';
-import YesIcon from 'material-ui-icons/CheckCircle';
-import CancelIcon from 'material-ui-icons/Cancel';
-import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import {
@@ -15,68 +13,82 @@ import {
     editExistingComment
 } from '../actions';
 
-const CommentDialog = (props) => {
+
+
+class CommentDialog extends Component {
+
+
+    render() {
         const {
-            open,
-            onRequestClose,
-            isYesAcive = false,
-            body,
-            author,
-            parentId,
-            id,
+            open, onRequestClose, isYesActive = false,
+            body, author, parentId, id,
             isEdit,
             handleCommentDialogChange,
             createNewComment,
             editExistingComment
-        } = props;
-        const yesButtonColor = isYesAcive? "primary": "default";
+        } = this.props;
+        const yesButtonColor = isYesActive? "primary": "default";
         const title = isEdit? "Edit Comment": "Add Comment";
+
+        const customContentStyle = {
+          width: '100%',
+          maxWidth: 'none',
+        };
+
+        const buttonStyle = {
+          margin: 12,
+        };
+
         return (
             <Dialog
                 open={open}
                 onRequestClose={onRequestClose}
-                title={title}>
+                dialogueTitle={title}
+                contentStyle={customContentStyle}
+                >
                     <TextField
-                        required autoFocus fullWidth multiline
-                        rowsMax="3"
-                        label="Comment"
+                        required
+                        fullWidth
+                        floatingLabelText="Body"
                         defaultValue={body}
+                        multiLine={true}
+                        rows={4}
+                        rowsMax={6}
                         margin="normal"
                         onChange={(event) =>
                             handleCommentDialogChange("body", event.target.value)}
                         style={{minWidth: 320}}/>
+                        <br/>
+                        <br/>
                     <TextField
-                        required disabled={isEdit}
-                        label="Owner"
-                        defaultValue={author}
                         onChange={(event) =>
                             handleCommentDialogChange("author", event.target.value)}
-                        margin="normal"/>
-                    <IconButton onClick={onRequestClose}
-                        color="default">
-                        <CancelIcon />
-                    </IconButton>
-                    <IconButton
-                        disabled={!isYesAcive}
-                        color={yesButtonColor}
+                        floatingLabelText="Author"
+                        defaultValue={author}/>
+                      <RaisedButton onClick={onRequestClose}
+                        secondary={true}
+                        label='Cancel'
+                        style={buttonStyle}
+                        />
+                      <RaisedButton
+                        disabled={!isYesActive}
+                        primary={true}
                         onClick={() => isEdit?
                             editExistingComment(id, body):
-                            createNewComment({body, author, parentId})}>
-                        <YesIcon />
-                    </IconButton>
+                            createNewComment({body, author, parentId})}
+                        label='Submit'
+                        style={buttonStyle}
+                        />
             </Dialog>
         );
-
+    }
 }
 
 function mapStateToProps ({commentDialog: {id, body, author, isEdit}, postDetail: { post }}) {
     return {
         isEdit,
-        id,
-        body,
-        author,
-        parentId: post? post.id: null,
-        isYesAcive: !!body && !!author
+        id, body, author, parentId: post? post.id: null,
+        isYesActive: !!body && !!author
     }
 }
 

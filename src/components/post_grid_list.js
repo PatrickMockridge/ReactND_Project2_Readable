@@ -29,17 +29,21 @@ const styles = {
 
   const PostGridList = (props) => {
 
-  const { fetchPostDetails } = props
+  const { fetchPostDetails, fetchComments } = props
 
-  const openPostDetail = (event) => fetchPostDetails(event.target.value)
+  const openPostDetail = (event) => {
+    props.fetchPostDetails(event.target.value)
+  }
+
+
 
   return (
 
   <div style={styles.root}>
     <GridList style={styles.gridList} cols={2.2}>
-      {props.posts.map((post) => (
+      {props.posts.map((post, index) => (
         <GridTile
-          key={post.id}
+          key={post.timestamp.toString()}
           title={post.title}
           actionIcon={<IconButton value={post.id} onClick={openPostDetail}><ActionFlightTakeoff  color={tealA400} /></IconButton>}
           titleStyle={styles.titleStyle}
@@ -62,7 +66,8 @@ function mapStateToProps ({posts, currentCategory}) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchPostDetails: (id) => dispatch(fetchPostDetails(id))
+        fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
+        fetchComments: (id) => dispatch(fetchComments(id))
     }
 }
 

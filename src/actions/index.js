@@ -17,7 +17,7 @@ import {
     editExistingPost,
     deleteExistingPost,
     sortPostsByVotes,
-    sortPostsByTime
+    sortPostsByTime,
 } from './actions_posts';
 import {
     UP_VOTE_POST,
