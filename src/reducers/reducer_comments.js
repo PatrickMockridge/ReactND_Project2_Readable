@@ -5,7 +5,9 @@ import {
     DOWN_VOTE_COMMENT,
     DELETE_COMMENT,
     DELETE_POST,
-    EDIT_COMMENT
+    EDIT_COMMENT,
+    SORT_COMMENTS_BY_TIME,
+    SORT_COMMENTS_BY_VOTES
  } from '../actions';
 
 function comments (state = initialCommentsState, action) {
@@ -13,13 +15,20 @@ function comments (state = initialCommentsState, action) {
         case FETCH_COMMENTS:
             return {
                 ...state,
-                [action.id]: action.comments
+                [action.id]: action.comments.sort((a, b) => {
+                    return b.voteScore - a.voteScore;
+                })
             }
         case CREATE_COMMENT:
             let existingComments = state[action.comment.parentId] || [];
             return {
                 ...state,
-                [action.comment.parentId]: existingComments.concat(action.comment)
+                [action.comment.parentId]:
+                existingComments
+                .concat(action.comment)
+                .sort((a, b) => {
+                   return b.voteScore - a.voteScore;
+                })
             }
         case UP_VOTE_COMMENT:
         case DOWN_VOTE_COMMENT:
@@ -31,7 +40,7 @@ function comments (state = initialCommentsState, action) {
                     .filter(comment => comment.id !== action.comment.id)
                     .concat(action.comment)
                     .sort((a, b) => {
-                        return a.timestamp - b.timestamp;
+                        return b.voteScore - a.voteScore;
                     })
             }
         case DELETE_COMMENT:
@@ -45,7 +54,27 @@ function comments (state = initialCommentsState, action) {
             return {
                 ...state,
                 [action.id]: []
-            }
+              }
+        case SORT_COMMENTS_BY_VOTES:
+              existingComments = state[action.id] || [];
+              return {
+                  ...state,
+                  [action.id]:
+                  existingComments
+                  .sort((a, b) => {
+                     return b.voteScore - a.voteScore;
+                  })
+              };
+        case SORT_COMMENTS_BY_TIME:
+              existingComments = state[action.id] || [];
+              return {
+                ...state,
+                [action.id]:
+                existingComments
+                .sort((a, b) => {
+                    return b.timestamp - a.timestamp;
+                })
+        };
         default:
             return state
     }

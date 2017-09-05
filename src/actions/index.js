@@ -7,7 +7,6 @@ import {
     EDIT_POST,
     DELETE_POST,
     SORT_POSTS_BY_UP_VOTES,
-    SORT_POSTS_BY_DOWN_VOTES,
     SORT_POSTS_BY_TIME,
     fetchCategories,
     fetchPosts,
@@ -34,10 +33,14 @@ import {
     CREATE_COMMENT,
     DELETE_COMMENT,
     EDIT_COMMENT,
+    SORT_COMMENTS_BY_TIME,
+    SORT_COMMENTS_BY_VOTES,
     fetchComments,
     createNewComment,
     deleteExistingComment,
-    editExistingComment
+    editExistingComment,
+    sortCommentsByTime,
+    sortCommentsByVotes
 } from './actions_comments';
 import {
     OPEN_POST_DIALOG,
@@ -69,7 +72,6 @@ export {
     EDIT_POST,
     DELETE_POST,
     SORT_POSTS_BY_UP_VOTES,
-    SORT_POSTS_BY_DOWN_VOTES,
     SORT_POSTS_BY_TIME,
     fetchCategories,
     fetchPosts,
@@ -92,6 +94,10 @@ export {
     CREATE_COMMENT,
     DELETE_COMMENT,
     EDIT_COMMENT,
+    SORT_COMMENTS_BY_TIME,
+    SORT_COMMENTS_BY_VOTES,
+    sortCommentsByTime,
+    sortCommentsByVotes,
     fetchComments,
     createNewComment,
     deleteExistingComment,

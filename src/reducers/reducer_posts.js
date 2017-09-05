@@ -43,7 +43,6 @@ function posts (state = initialPostsState, action) {
                 posts: state.posts.filter(post => post.id !== action.id)
             }
         case UP_VOTE_POST:
-        case DOWN_VOTE_POST:
             return {
                 ...state,
                 posts: sortPostsBy(
@@ -56,11 +55,6 @@ function posts (state = initialPostsState, action) {
             return {
                 sortBy: SORT_BY_UP,
                 posts: sortPostsBy(state.posts, SORT_BY_UP)
-            };
-        case SORT_POSTS_BY_DOWN_VOTES:
-            return {
-                sortBy: SORT_BY_DOWN,
-                posts: sortPostsBy(state.posts, SORT_BY_DOWN)
             };
         case SORT_POSTS_BY_TIME:
             return {

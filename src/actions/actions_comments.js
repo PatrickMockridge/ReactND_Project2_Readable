@@ -4,6 +4,8 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const SORT_COMMENTS_BY_VOTES = 'SORT_COMMENTS_BY_VOTES'
+export const SORT_COMMENTS_BY_TIME = 'SORT_COMMENTS_BY_TIME'
 
 export const fetchComments = (id) => dispatch => (
     getComments(id)
@@ -35,3 +37,15 @@ export const editExistingComment = (id, body) => dispatch => (
             comment
         }))
 );
+
+export const sortCommentsByVotes = (id, comments) => ({
+    type: SORT_COMMENTS_BY_VOTES,
+    id,
+    comments
+});
+
+export const sortCommentsByTime = (id, comments) => ({
+    type: SORT_COMMENTS_BY_TIME,
+    id,
+    comments
+});

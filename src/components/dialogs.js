@@ -13,10 +13,8 @@ const Dialog = (props) => {
         const {
             isPostDialogOpen,
             isCommentDialogOpen,
-            //isSnackbarOpen,
             closePostDialog,
             closeCommentDialog,
-            //closeSnackbar
         } = props;
         return (
             <div>

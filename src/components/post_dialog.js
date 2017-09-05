@@ -92,7 +92,7 @@ class PostDialog extends Component {
                         <br/>
                         <br/>
                         <TextField
-                            required disabled={isEdit}
+                            required
                             error={isAuthorError}
                             onChange={(event) =>
                                 handlePostDialogChange("author", event.target.value)}

@@ -17,7 +17,6 @@ import {
 
 class CommentDialog extends Component {
 
-
     render() {
         const {
             open, onRequestClose, isYesActive = false,
@@ -27,7 +26,7 @@ class CommentDialog extends Component {
             createNewComment,
             editExistingComment
         } = this.props;
-        const yesButtonColor = isYesActive? "primary": "default";
+
         const title = isEdit? "Edit Comment": "Add Comment";
 
         const customContentStyle = {
@@ -46,7 +45,7 @@ class CommentDialog extends Component {
                 dialogueTitle={title}
                 contentStyle={customContentStyle}
                 >
-                    <TextField
+                      <TextField
                         required
                         fullWidth
                         floatingLabelText="Body"
@@ -60,7 +59,7 @@ class CommentDialog extends Component {
                         style={{minWidth: 320}}/>
                         <br/>
                         <br/>
-                    <TextField
+                      <TextField
                         onChange={(event) =>
                             handleCommentDialogChange("author", event.target.value)}
                         floatingLabelText="Author"

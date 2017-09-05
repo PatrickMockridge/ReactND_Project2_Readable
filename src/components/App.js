@@ -7,6 +7,8 @@ import PostGridList from './post_grid_list'
 import Dialog from './dialogs'
 import PostAddButton from './post_add_button'
 import CommentAddButton from './comment_add_button'
+import CommentSortbyVotesButton from './comment_sort_by_votes_button'
+import CommentSortbyTimeButton from './comment_sort_by_time_button'
 import PostSorterMenu from './post_sorter_menu'
 import PostDetailCard from './post_detail_card'
 import { fetchPosts } from '../actions'
@@ -30,6 +32,8 @@ class App extends Component {
         <br />
         <PostAddButton/>
         <CommentAddButton/>
+        <CommentSortbyVotesButton/>
+        <CommentSortbyTimeButton/>
       </div>
     );
   }
