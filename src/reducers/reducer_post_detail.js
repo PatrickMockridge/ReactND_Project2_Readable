@@ -13,10 +13,6 @@ function postDetail(state = initialPostDetailState, action) {
             return {
             post: action.post
             };
-        case DOWN_VOTE_POST:
-            return {
-                post: action.post
-            };
         case DELETE_POST:
             return initialPostDetailState;
         default:
