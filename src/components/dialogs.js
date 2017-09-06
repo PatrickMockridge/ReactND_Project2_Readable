@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PostDialog from './post_dialog';
 import CommentDialog from './comment_dialog';
@@ -30,8 +30,7 @@ const Dialog = (props) => {
 
 function mapStateToProps ({
     postDialog: { openPostDialog: isPostDialogOpen },
-    commentDialog: { isOpen: isCommentDialogOpen },
-    // snackbar: { isOpen: isSnackbarOpen}
+    commentDialog: { isOpen: isCommentDialogOpen }
     }) {
     return {
         isPostDialogOpen,

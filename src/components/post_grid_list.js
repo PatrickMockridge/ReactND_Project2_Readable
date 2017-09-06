@@ -2,10 +2,9 @@ import React from 'react';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
-import FontIcon from 'material-ui/FontIcon';
 import { connect } from 'react-redux';
 import { tealA400 } from 'material-ui/styles/colors';
-import { fetchPostDetails, fetchComments } from '../actions'
+import { fetchPostDetails } from '../actions'
 
 const styles = {
   root: {
@@ -29,7 +28,7 @@ const styles = {
 
   const PostGridList = (props) => {
 
-  const { fetchPostDetails, fetchComments } = props
+  const { fetchPostDetails } = props
 
   const openPostDetail = (event) => {
     props.fetchPostDetails(event.target.value)
@@ -50,7 +49,7 @@ const styles = {
           titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
           style={styles.tileStyle}
         >
-          <img src={'https://unsplash.it/g/200'} />
+          <img src={'https://unsplash.it/g/200'} alt={'Placeholder Picture'} />
         </GridTile>
       ))}
     </GridList>
@@ -66,8 +65,7 @@ function mapStateToProps ({posts, currentCategory}) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
-        fetchComments: (id) => dispatch(fetchComments(id))
+        fetchPostDetails: (id) => dispatch(fetchPostDetails(id))
     }
 }
 

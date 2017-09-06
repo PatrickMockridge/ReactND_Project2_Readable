@@ -1,13 +1,11 @@
 import {
     LOAD_POSTS,
     SORT_POSTS_BY_UP_VOTES,
-    SORT_POSTS_BY_DOWN_VOTES,
     SORT_POSTS_BY_TIME,
     SELECT_CATEGORY,
     CREATE_POST,
     EDIT_POST,
     UP_VOTE_POST,
-    DOWN_VOTE_POST,
     DELETE_POST
  } from '../actions';
 
@@ -77,10 +75,6 @@ const sortPostsBy = (posts, option) => {
             return [...posts].sort((a, b) => {
                 return b.voteScore - a.voteScore;
             });
-        case SORT_BY_DOWN:
-            return [...posts].sort((a, b) => {
-                return a.voteScore - b.voteScore;
-            });
         case SORT_BY_LATEST:
             return [...posts].sort((a, b) => {
                 return b.timestamp - a.timestamp;
@@ -91,7 +85,6 @@ const sortPostsBy = (posts, option) => {
 }
 
 const SORT_BY_UP = 'upVotes';
-const SORT_BY_DOWN = 'downVotes';
 const SORT_BY_LATEST = 'latest';
 
 const initialPostsState = {

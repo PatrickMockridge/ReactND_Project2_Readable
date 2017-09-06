@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
 import PostSorterMenu from './post_sorter_menu'
 import CategoriesMenu from './categories_menu'
-import { connect } from 'react-redux'
 
 
 const NavBar = (props) => {

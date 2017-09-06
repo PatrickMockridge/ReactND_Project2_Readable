@@ -51,7 +51,6 @@ import {
     CLOSE_COMMENT_DIALOG,
     HANDLE_COMMENT_DIALOG_CHANGE,
     OPEN_EDIT_COMMENT_DIALOG,
-    CLOSE_SNACKBAR,
     openPostDialog,
     closePostDialog,
     handlePostDialogChange,
@@ -59,8 +58,7 @@ import {
     openCommentDialog,
     closeCommentDialog,
     handleCommentDialogChange,
-    openEditCommentDialog,
-    closeSnackbar
+    openEditCommentDialog
 } from './actions_dialog';
 
 export {
@@ -110,7 +108,6 @@ export {
     CLOSE_COMMENT_DIALOG,
     HANDLE_COMMENT_DIALOG_CHANGE,
     OPEN_EDIT_COMMENT_DIALOG,
-    CLOSE_SNACKBAR,
     openPostDialog,
     closePostDialog,
     handlePostDialogChange,
@@ -119,5 +116,4 @@ export {
     closeCommentDialog,
     handleCommentDialogChange,
     openEditCommentDialog,
-    closeSnackbar
 }

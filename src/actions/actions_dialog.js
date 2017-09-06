@@ -6,7 +6,6 @@ export const OPEN_COMMENT_DIALOG = 'OPEN_COMMENT_DIALOG';
 export const CLOSE_COMMENT_DIALOG = 'CLOSE_COMMENT_DIALOG';
 export const HANDLE_COMMENT_DIALOG_CHANGE = 'HANDLE_COMMENT_DIALOG_CHANGE';
 export const OPEN_EDIT_COMMENT_DIALOG = 'OPEN_EDIT_COMMENT_DIALOG';
-export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
 //post dialog
 export const openPostDialog = () => ({
@@ -41,8 +40,3 @@ export const openEditCommentDialog = (comment) => ({
     type: OPEN_EDIT_COMMENT_DIALOG,
     comment
 })
-
-//snackbar
-export const closeSnackbar = () => ({
-    type: CLOSE_SNACKBAR
-});
