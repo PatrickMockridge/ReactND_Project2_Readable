@@ -2,7 +2,6 @@ import {
     SELECT_POST,
     EDIT_POST,
     UP_VOTE_POST,
-    DOWN_VOTE_POST,
     DELETE_POST
 } from '../actions';
 
