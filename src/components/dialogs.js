@@ -6,7 +6,6 @@ import CommentDialog from './comment_dialog';
 import {
     closePostDialog,
     closeCommentDialog,
-    //closeSnackbar
 } from '../actions';
 
 const Dialog = (props) => {
@@ -36,16 +35,14 @@ function mapStateToProps ({
     }) {
     return {
         isPostDialogOpen,
-        isCommentDialogOpen,
-        //isSnackbarOpen
+        isCommentDialogOpen
     }
 }
 
 function mapDispatchToProps (dispatch) {
     return {
         closePostDialog: () => dispatch(closePostDialog()),
-        closeCommentDialog: () => dispatch(closeCommentDialog()),
-        //closeSnackbar: () => dispatch(closeSnackbar())
+        closeCommentDialog: () => dispatch(closeCommentDialog())
     }
 }
 

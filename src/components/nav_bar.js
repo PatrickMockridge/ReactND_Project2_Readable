@@ -8,18 +8,16 @@ import { connect } from 'react-redux'
 
 const NavBar = (props) => {
 
-  //const { fetchPosts } = props;
-
   const handleTouchTap = () => {
     window.location.reload()
   }
 
 
   const styles = {
-  title: {
-    cursor: 'pointer',
-  },
-};
+    title: {
+      cursor: 'pointer',
+    },
+  };
 
     return (
       <div>
@@ -28,7 +26,7 @@ const NavBar = (props) => {
           onTitleTouchTap={handleTouchTap}
           iconElementLeft={<PostSorterMenu/>}
           iconElementRight={<CategoriesMenu/>}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          zDepth={2}
         />
       </div>
     );
