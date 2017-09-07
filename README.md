@@ -6,7 +6,7 @@ To start, clone the application in the terminal: `git clone https://github.com/P
 
 Then `cd/ReactND_Project2/Readable`
 
-Node packages and depndencies are managed using `yarn`: [https://yarnpkg.com]
+Node packages and dependencies are managed using `yarn`: [https://yarnpkg.com]
 
 For `yarn` installation instructions: [https://yarnpkg.com/lang/en/docs/install/#linux-tab]
 
