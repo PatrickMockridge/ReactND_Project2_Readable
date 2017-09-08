@@ -26,7 +26,7 @@ const CommentSortbyVotesButton = (props) => {
             sortCommentsByVotes(postDetail.id, comments)
           }
 
-        if((Object.keys(comments).length === 0 && comments.constructor === Object) || (posts.length == 0)) {
+        if((Object.keys(comments).length === 0 && comments.constructor === Object) || (posts.length == 0) || (postDetail.post == null)) {
           return <p></p>
         }
 
