@@ -27,13 +27,13 @@ const PostDetailActions = (props) => {
         return (
               <CardActions>
                     <RaisedButton
-                        secondary={true}
+                        primary={true}
                         label='Edit Comment'
                         style={buttonStyle}
                         onClick={() => openEditCommentDialog(comment)}
                     />
                     <RaisedButton
-                        primary={true}
+                        secondary={true}                        
                         label="Delete Comment"
                         style={buttonStyle}
                         onClick={() => deleteExistingComment(id, parentId)}

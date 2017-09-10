@@ -39,13 +39,4 @@ const CommentsList = (props) => {
             );
 }
 
-const mapStateToProps = ({comments, postDetail}) => {
-    return {
-        comments: postDetail? comments[postDetail.post.id] : comments
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    null
-)(CommentsList);
+export default CommentsList;

@@ -1,29 +1,14 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import PostSorterMenu from './post_sorter_menu'
-import CategoriesMenu from './categories_menu'
+import { Link } from 'react-router-dom'
 
 
 const NavBar = (props) => {
 
-  const handleTouchTap = () => {
-    window.location.reload()
-  }
-
-
-  const styles = {
-    title: {
-      cursor: 'pointer',
-    },
-  };
-
     return (
       <div>
         <AppBar
-          title={<span style={styles.title}>Readable</span>}
-          onTitleTouchTap={handleTouchTap}
-          iconElementLeft={<PostSorterMenu/>}
-          iconElementRight={<CategoriesMenu/>}
+          title={<Link to='/'><span>Readable</span></Link>}
           zDepth={2}
         />
       </div>

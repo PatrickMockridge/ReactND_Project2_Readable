@@ -1,23 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TimeAgo from 'time-ago'
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import PostDetailActions from './post_detail_actions'
 import CommentsList from './comments_list'
 import { connect } from 'react-redux'
-import { fetchComments } from '../actions'
+
 
 const PostDetailCard = (props) => {
-
-  const { postDetail, fetchComments } = props;
-
+  const { postDetail } = props;
   const timeAgo = TimeAgo();
-
-  if (!props.postDetail) {
-    return (
-        <p></p>
-    )
-  }
-  else {
     return (
     <div>
       <Card>
@@ -33,28 +24,10 @@ const PostDetailCard = (props) => {
             {postDetail.voteScore} votes
           </div>
         </CardText>
-          <PostDetailActions />
+          <PostDetailActions postDetail={postDetail}/>
       </Card>
-      <CommentsList />
     </div>
     )
-  }
 };
 
-
-const mapStateToProps = ({postDetail}) => {
-    return {
-        postDetail: postDetail.post
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-      fetchComments: (id) => dispatch(fetchComments(id))
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(PostDetailCard);
+export default PostDetailCard;

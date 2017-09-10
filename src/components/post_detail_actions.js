@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton';
 import { CardActions } from 'material-ui/Card';
 import { connect } from 'react-redux';
 import {
     openEditPostDialog,
     upVotePost,
-    deleteExistingPost,
-    fetchComments
+    deleteExistingPost
 } from '../actions';
 
 const PostDetailActions = (props) => {
@@ -15,8 +15,7 @@ const PostDetailActions = (props) => {
             openEditPostDialog,
             deleteExistingPost,
             upVote,
-            postDetail,
-            fetchComments
+            postDetail
         } = props;
 
         const { category, id } = postDetail;
@@ -33,44 +32,30 @@ const PostDetailActions = (props) => {
                         style={buttonStyle}
                         onClick={() => openEditPostDialog(postDetail)}
                     />
-                    <RaisedButton
-                        secondary={true}
-                        label="Delete Post"
-                        style={buttonStyle}
-                        onClick={() => deleteExistingPost(id)}
-                    />
+                    <Link to="/">
+                      <RaisedButton
+                          secondary={true}
+                          label="Delete Post"
+                          style={buttonStyle}
+                          onClick={() => deleteExistingPost(id)}
+                          />
+                    </Link>
                     <RaisedButton
                         default={true}
                         label="+1 Vote"
                         style={buttonStyle}
                         onClick={() => upVote(id)}
                     />
-                    <RaisedButton
-                        default={true}
-                        label="Get All Comments"
-                        style={buttonStyle}
-                        onClick={() => fetchComments(id)}
-                    />
               </CardActions>
-
                 );
-
 };
-
-const mapStateToProps = ({postDetail}) => {
-    return {
-        postDetail: postDetail.post
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
         openEditPostDialog: (postDetail) => dispatch(openEditPostDialog(postDetail)),
         upVote: (id) => dispatch(upVotePost(id)),
         deleteExistingPost: (id) => dispatch(deleteExistingPost(id)),
-        fetchComments: (id) => dispatch(fetchComments(id))
-
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetailActions);
+export default connect(null, mapDispatchToProps)(PostDetailActions);
