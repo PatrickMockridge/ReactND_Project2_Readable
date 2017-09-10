@@ -24,11 +24,13 @@ class RootView extends Component {
   }
 
   render() {
-    const { categories,
+    const {
+      match: { params: { category }},
+      categories,
       posts } = this.props
     return (
       <div>
-        <CategoriesGridList categories={categories} />
+        <CategoriesGridList categories={category? [{path: category, name: category}] : categories} />
         <PostGridList posts={posts} />
         <PostAddButton />
         <PostSortByTimeButton />

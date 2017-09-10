@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
     openEditPostDialog,
     upVotePost,
+    downVotePost,
     deleteExistingPost
 } from '../actions';
 
@@ -15,6 +16,7 @@ const PostDetailActions = (props) => {
             openEditPostDialog,
             deleteExistingPost,
             upVote,
+            downVote,
             postDetail
         } = props;
 
@@ -46,6 +48,12 @@ const PostDetailActions = (props) => {
                         style={buttonStyle}
                         onClick={() => upVote(id)}
                     />
+                    <RaisedButton
+                        default={true}
+                        label="-1 Vote"
+                        style={buttonStyle}
+                        onClick={() => downVote(id)}
+                    />
               </CardActions>
                 );
 };
@@ -54,6 +62,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         openEditPostDialog: (postDetail) => dispatch(openEditPostDialog(postDetail)),
         upVote: (id) => dispatch(upVotePost(id)),
+        downVote: (id) => dispatch(downVotePost(id)),
         deleteExistingPost: (id) => dispatch(deleteExistingPost(id)),
     }
 }

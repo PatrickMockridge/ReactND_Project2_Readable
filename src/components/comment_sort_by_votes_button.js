@@ -13,7 +13,7 @@ const style = {
     right: 140
 };
 
-const CommentSortbyVotesButton = (props) => {
+const CommentSortByVotesButton = (props) => {
 
         const {
           sortCommentsByVotes,
@@ -26,16 +26,6 @@ const CommentSortbyVotesButton = (props) => {
             sortCommentsByVotes(postDetail.id, comments)
           }
 
-          if (
-            (Object.keys(comments).length === 0 && comments.constructor === Object)
-            || (posts.length == 0)
-            || ((postDetail === null) || (postDetail.post == null))
-          ) {
-            return <p></p>
-          }
-
-        else {
-
         return (
           <FloatingActionButton
             mini={true}
@@ -46,7 +36,7 @@ const CommentSortbyVotesButton = (props) => {
             <ContentSort />
           </FloatingActionButton>
         );
-      }
+
 };
 
 const mapStateToProps = ({postDetail, comments, posts}) => {
@@ -63,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentSortbyVotesButton);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentSortByVotesButton);

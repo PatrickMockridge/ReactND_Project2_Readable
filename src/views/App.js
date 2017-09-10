@@ -4,6 +4,7 @@ import NavBar from '../components/nav_bar'
 import Dialog from '../components/dialogs'
 import RootView from './root_view'
 import PostDetailView from './post_detail_view'
+import CategoryView from './category_view'
 import FourOhFour from './four_oh_four'
 import { connect } from 'react-redux'
 import { fetchPosts, fetchCategories } from '../actions'
@@ -15,7 +16,7 @@ class App extends Component {
     fetchPosts()
     fetchCategories()
   }
-  
+
   render() {
     return (
     <div>
@@ -23,7 +24,7 @@ class App extends Component {
         <NavBar />
         <Switch>
             <Route exact path="/" component={RootView} />
-            <Route exact path="/:category" component={RootView} />
+            <Route exact path="/:category" component={CategoryView} />
             <Route exact path="/:category/:id" component={PostDetailView} />
             <Route component={FourOhFour} />
         </Switch>

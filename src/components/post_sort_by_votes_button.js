@@ -10,7 +10,7 @@ const style = {
     marginRight: 20,
     position: 'fixed',
     bottom: 30,
-    right: 175
+    right: 130
 };
 
 const PostSortByVotesButton = (props) => {
@@ -25,13 +25,13 @@ const PostSortByVotesButton = (props) => {
 
         return (
           <FloatingActionButton
-            secondary={true}
+            primary={true}
             style={style}
             onClick={handleChange}
           >
             <ContentSort />
           </FloatingActionButton>
-        );      
+        );
 };
 
 const mapStateToProps = ({posts}) => {

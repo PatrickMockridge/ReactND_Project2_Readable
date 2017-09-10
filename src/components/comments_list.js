@@ -9,7 +9,7 @@ import CommentDetailActions from './comment_detail_actions'
 const CommentsList = (props) => {
 
   const commentStyle = {
-  backgroundColor: indigo900
+    backgroundColor: indigo900
   };
 
   const timeAgo = TimeAgo();

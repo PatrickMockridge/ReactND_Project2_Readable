@@ -10,14 +10,22 @@ import { fetchComments, fetchPostDetails } from '../actions'
 class PostDetailView extends Component {
 
   componentWillMount() {
-          const {
-              match: { params: { category, id }},
-              fetchPostDetails,
-              fetchComments
-          } = this.props;
-          fetchComments(id);
-          fetchPostDetails(id);
-      }
+    const {
+        match: { params: { category, id }},
+        fetchPostDetails,
+        fetchComments,
+      } = this.props;
+            fetchPostDetails(id);
+            fetchComments(id);
+        }
+
+  componentDidMount() {
+    const {
+        postDetail,
+        comments
+    } = this.props;
+  }
+
     render() {
         const {
             match: { params: { category, id }},
@@ -26,8 +34,8 @@ class PostDetailView extends Component {
           } = this.props;
     return(
       <div>
-        <PostDetailCard id={id} postDetail={postDetail}/>
-        <CommentsList comments={comments}/>
+        <PostDetailCard id={id} postDetail={postDetail? postDetail : {}}/>
+        <CommentsList comments={comments[id]}/>
         <CommentAddButton />
         <CommentSortByVotesButton />
         <CommentSortByTimeButton />
@@ -36,16 +44,21 @@ class PostDetailView extends Component {
   }
 }
 
-const mapStateToProps = ({ postDetail ,
-  match: { params: { category, id }},
-  comments }) => {
+const mapStateToProps = ({ postDetail , comments }) => {
         return {
-          post: postDetail.post,
-          comments: postDetail? comments[postDetail.id] : comments
+          postDetail: postDetail.post,
+          comments: comments
         }
+      }
+
+const mapDispatchToProps = (dispatch) => {
+          return {
+              fetchComments: (id) => dispatch(fetchComments(id)),
+              fetchPostDetails: (id) => dispatch(fetchPostDetails(id))
+          }
       }
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(PostDetailView);

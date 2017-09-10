@@ -26,16 +26,6 @@ const CommentSortbyTimeButton = (props) => {
             sortCommentsByTime(postDetail.id, comments)
           }
 
-        if (
-          (Object.keys(comments).length === 0 && comments.constructor === Object)
-          || (posts.length == 0)
-          || ((postDetail === null) || (postDetail.post == null))
-        ) {
-          return <p></p>
-        }
-
-        else {
-
         return (
           <FloatingActionButton
             mini={true}
@@ -46,7 +36,7 @@ const CommentSortbyTimeButton = (props) => {
             <ContentSort />
           </FloatingActionButton>
         );
-      }
+      
 };
 
 const mapStateToProps = ({postDetail, comments, posts}) => {

@@ -17,11 +17,27 @@ export const upVotePost = (id) => dispatch => (
         }))
 );
 
+export const downVotePost = (id) => dispatch => (
+    votePost(id, "downVote")
+        .then(post => dispatch({
+            type: DOWN_VOTE_POST,
+            post
+        }))
+);
+
 //comments
 export const upVoteComment = (id) => dispatch => (
     voteComment(id, "upVote")
         .then(comment => dispatch({
             type: UP_VOTE_COMMENT,
+            comment
+        }))
+);
+
+export const downVoteComment = (id) => dispatch => (
+    voteComment(id, "downVote")
+        .then(comment => dispatch({
+            type: DOWN_VOTE_COMMENT,
             comment
         }))
 );

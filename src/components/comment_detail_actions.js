@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {
     openEditCommentDialog,
     upVoteComment,
+    downVoteComment,
     deleteExistingComment
 } from '../actions';
 
@@ -14,6 +15,7 @@ const PostDetailActions = (props) => {
             openEditCommentDialog,
             deleteExistingComment,
             upVote,
+            downVote,
             comment
         } = props;
 
@@ -33,7 +35,7 @@ const PostDetailActions = (props) => {
                         onClick={() => openEditCommentDialog(comment)}
                     />
                     <RaisedButton
-                        secondary={true}                        
+                        secondary={true}
                         label="Delete Comment"
                         style={buttonStyle}
                         onClick={() => deleteExistingComment(id, parentId)}
@@ -43,6 +45,12 @@ const PostDetailActions = (props) => {
                         label="+1 Vote"
                         style={buttonStyle}
                         onClick={() => upVote(id)}
+                    />
+                    <RaisedButton
+                        default={true}
+                        label="-1 Vote"
+                        style={buttonStyle}
+                        onClick={() => downVote(id)}
                     />
               </CardActions>
         );
@@ -58,6 +66,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         openEditCommentDialog: (comment) => dispatch(openEditCommentDialog(comment)),
         upVote: (id) => dispatch(upVoteComment(id)),
+        downVote: (id) => dispatch(downVoteComment(id)),
         deleteExistingComment: (id, parentId) => dispatch(deleteExistingComment(id, parentId))
     }
 }
