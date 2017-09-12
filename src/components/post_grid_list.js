@@ -47,17 +47,4 @@ const PostGridList = (props) => {
   )
 };
 
-function mapStateToProps ({posts}) {
-    return {
-        posts: posts.posts
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchPostDetails: (id) => dispatch(fetchPostDetails(id))
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostGridList);
+export default PostGridList;

@@ -31,6 +31,7 @@ class RootView extends Component {
     return (
       <div>
         <CategoriesGridList categories={category? [{path: category, name: category}] : categories} />
+        <br />
         <PostGridList posts={posts} />
         <PostAddButton />
         <PostSortByTimeButton />
